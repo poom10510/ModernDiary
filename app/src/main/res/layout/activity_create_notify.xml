@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="kitipoom.moderndiary.activities.CreateNotify">
+    <LinearLayout
+        android:id="@+id/Hourlinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hour"/>
+        <EditText
+            android:id="@+id/timeHouradd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Input Hour"
+            android:inputType="number"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/Minutelinear"
+        android:layout_below="@+id/Hourlinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Minute"/>
+        <EditText
+            android:id="@+id/timeMinuteadd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Input Minute"
+            android:inputType="number"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+        <Button
+            android:id="@+id/check_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Check"/>
+
+    </LinearLayout>
+
+        <EditText
+            android:id="@+id/Notifytitle"
+            android:layout_below="@id/Minutelinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Input Title"
+            android:inputType="text"
+            />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|top"
+        android:id="@+id/linearLayout2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <Button
+            android:id="@+id/confirm_time_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm"
+
+
+            />
+        <Button
+            android:id="@+id/delete_time_btn"
+            android:text="DELETE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="Notify"
+            android:id="@+id/notify_time_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <FrameLayout
+        android:layout_below="@id/Notifytitle"
+        android:layout_above="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+
+            android:id="@+id/Notifytext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Input dialog"/>
+    </FrameLayout>
+
+
+
+</RelativeLayout>
