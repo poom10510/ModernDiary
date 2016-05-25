@@ -67,7 +67,6 @@ public class DateActivity extends AppCompatActivity {
         savebutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Storage.getSt().getDateyear().getDateMonth(month).getDateDay(day).getDiary().setText(notetext.getText().toString());
                 Storage.getSt().getDateyear().getDateMonth(month).getDateDay(day).getDiary().saveDiary(notetext.getText().toString(), ((BitmapDrawable) imageView.getDrawable()).getBitmap());
                 finish();
             }
@@ -85,8 +84,6 @@ public class DateActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
                 Intent intent = new Intent(DateActivity.this, NotifyListActivity.class);
                 startActivity(intent);
             }
@@ -97,8 +94,6 @@ public class DateActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                //displayNoti();
-                //sendNotification(notetext.getText().toString());
                 Intent i = new Intent(
                         Intent.ACTION_PICK,
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -117,29 +112,6 @@ public class DateActivity extends AppCompatActivity {
         });
 
 
-    }
-    private void sendNotification(String msg) {
-
-        NotificationManager mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        Intent intent = new Intent(this, MainActivity.class);
-
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, 0);
-
-        Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-
-        NotificationCompat.Builder mBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(
-                this).setSmallIcon(R.drawable.stat_notify_chat)
-                .setContentTitle(getString(R.string.app_name))
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
-                .setContentText(msg).setLights(Color.GREEN, 300, 300)
-                .setVibrate(new long[]{100, 250 })
-                .setDefaults(Notification.DEFAULT_SOUND).setAutoCancel(true)
-                .setSound(soundUri)
-                .setVisibility(Notification.VISIBILITY_PUBLIC);//special
-
-        mBuilder.setContentIntent(contentIntent);
-        mNotificationManager.notify(new Random().nextInt(), mBuilder.build());
     }
     public void checkDate(){
         Storage.getSt().saveDate(day, month, year);

@@ -54,10 +54,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, DateActivity.class);
-               /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
-                /*i++;
-                textcount.setText(i + "");*/
                 startActivity(intent);
             }
         });
@@ -68,10 +64,6 @@ public class MainActivity extends AppCompatActivity {
             public void onSelectedDayChange(CalendarView view, int year,
                                             int month, int dayOfMonth) {
                 // TODO Auto-generated method stub
-                /*Toast.makeText(
-                        getBaseContext(),
-                        "Selected Date is\n\n" + dayOfMonth + " / " + (month+1)
-                                + " / " + year, Toast.LENGTH_LONG).show();*/
                 Datasend.getInstant().setDate(dayOfMonth, (month + 1), year);
                 textcount.setText(calendar.getTime() + " " + dayOfMonth + " / " + (month + 1)
                         + " / " + year);
@@ -136,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
 
         final NotificationCompat.Builder mBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(
                 this).setSmallIcon(R.drawable.noti_icon)
-                //.setContentTitle(getString(R.string.app_name))
                 .setContentTitle(head)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
                 .setContentText(msg).setLights(Color.GREEN, 300, 300)
@@ -147,27 +138,17 @@ public class MainActivity extends AppCompatActivity {
 
         mBuilder.setContentIntent(contentIntent);
         mNotificationManager.notify(new Random().nextInt(), mBuilder.build());
-        //textcount.setText(calendar.getTime() + " " + calendar.get(Calendar.SECOND));
-           /* if(calendar.get(Calendar.SECOND)%10==0) {
-                mNotificationManager.notify(new Random().nextInt(), mBuilder.build());
-            }*/
 
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.DiaryDateList) {
             Intent intent = new Intent(MainActivity.this, DiaryListActivity.class);
             startActivity(intent);

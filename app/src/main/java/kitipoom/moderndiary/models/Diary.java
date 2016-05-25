@@ -22,7 +22,6 @@ public class Diary  implements Serializable {
 
     public Diary(int year,int month,int day){
         this.text="Hello World";
-        //this.text=day+"/"+month+"/"+year;
         this.day=day;
         this.month=month;
         this.year=year;
@@ -44,6 +43,7 @@ public class Diary  implements Serializable {
 
     public void delete(){
         this.text = "Hello World";
+        this.bmp = null;
         open = false;
     }
 

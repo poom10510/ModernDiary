@@ -80,11 +80,6 @@ public class CreateNotify extends AppCompatActivity {
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*if(!TimeTitle.getText().toString().equals("")) {
-
-                }*/
-               /* Storage.getSt().getDateyear().getDateMounth(mounth).getDateDay(day).getNotifyHour(hour).getNotifyMin(min).getNotifytime().setTitle(Title.getText().toString());
-                Storage.getSt().getDateyear().getDateMounth(mounth).getDateDay(day).getNotifyHour(hour).getNotifyMin(min).getNotifytime().setText(Text.getText().toString());*/
                 if(check) {
                     Storage.getSt().getDateyear().getDateMonth(month).getDateDay(day).getNotifyHour(hour).getNotifyMin(min).getNotifytime().confirmopen(Title.getText().toString(), Text.getText().toString());
                     finish();

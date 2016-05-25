@@ -27,7 +27,6 @@ public class DateNotifyAdapter extends ArrayAdapter<DateDay> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        //return super.getView(position, convertView, parent);
         View v =convertView;
         if(v==null){
             LayoutInflater vi = LayoutInflater.from(getContext());

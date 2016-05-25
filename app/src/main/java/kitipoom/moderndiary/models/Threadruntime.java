@@ -23,7 +23,6 @@ public class Threadruntime extends Thread{
     public void run() {
         while(true) {
             try {
-                //sleep((long)1000); //หยุดการทำงาน 1 วินาที
                 sleep((long)1000);
             }
             catch(InterruptedException e) {

@@ -84,9 +84,6 @@ public class NotifyListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {             //important
             @Override
             public void onClick(View view) {
-               /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
-                // Datasend.getInstant().setTime(0,0);
                 Datasend.getInstant().setTime(calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
 
                 Intent intent = new Intent(NotifyListActivity.this, CreateNotify.class);
@@ -118,8 +115,6 @@ public class NotifyListActivity extends AppCompatActivity {
 
 
         }
-       // NotifyTime a = new NotifyTime(5,11);
-        //notilist.add(a);
         notiAdapter.notifyDataSetChanged();
     }
 
@@ -142,8 +137,6 @@ public class NotifyListActivity extends AppCompatActivity {
 
 
         }
-       /* NotifyTime a = new NotifyTime(5,10);
-        notilist.add(a);*/
         notiAdapter.notifyDataSetChanged();
 
 
