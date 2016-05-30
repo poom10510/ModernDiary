@@ -47,13 +47,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void initComponent(){
         textcount = (TextView) findViewById(R.id.Textcount);
-        textcount.setText(calendar.getTime() + "");
+        textcount.setText(data.getDay()+" / "+data.getMonth()+" / "+data.getYear());
         Datasend.getInstant().setDate(calendar.get(Calendar.DAY_OF_MONTH), (calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.YEAR));
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fabdiary = (FloatingActionButton) findViewById(R.id.fabDiary);
+        fabdiary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, DateActivity.class);
+                startActivity(intent);
+            }
+        });
+        FloatingActionButton fabnotify = (FloatingActionButton) findViewById(R.id.fabNotify);
+        fabnotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Storage.getSt().saveDate(data.getDay(),data.getMonth(),data.getYear());
+                Intent intent = new Intent(MainActivity.this, NotifyListActivity.class);
                 startActivity(intent);
             }
         });
@@ -65,8 +74,7 @@ public class MainActivity extends AppCompatActivity {
                                             int month, int dayOfMonth) {
                 // TODO Auto-generated method stub
                 Datasend.getInstant().setDate(dayOfMonth, (month + 1), year);
-                textcount.setText(calendar.getTime() + " " + dayOfMonth + " / " + (month + 1)
-                        + " / " + year);
+                textcount.setText(dayOfMonth + " / " + (month + 1) + " / " + year);
             }
         });
 
@@ -87,19 +95,12 @@ public class MainActivity extends AppCompatActivity {
         nmin = calendar.get(Calendar.MINUTE);
         for(int i =0; i< Storage.getSt().getDateList().size();i++){
             if(ny==Storage.getSt().getDateList().get(i).getYear()){
-                textcount.setText(calendar.getTime() + "yp"+nm);
                 if(Storage.getSt().getDateList().get(i).getDateMonth(nm)!=null){
-                    textcount.setText(textcount.getText() + "mp");
                     if(Storage.getSt().getDateList().get(i).getDateMonth(nm).getDateDay(nd)!=null) {
-                        textcount.setText(textcount.getText() + "dp");
                         if(Storage.getSt().getDateList().get(i).getDateMonth(nm).getDateDay(nd).haveNotilist()) {
-                            textcount.setText(textcount.getText() + "is mp");
                             if (Storage.getSt().getDateList().get(i).getDateMonth(nm).getDateDay(nd).getNotifyHour(nhour) != null) {
-                                textcount.setText(textcount.getText() + "hp");
                                 if (Storage.getSt().getDateList().get(i).getDateMonth(nm).getDateDay(nd).getNotifyHour(nhour).getNotifyMin(nmin) != null) {
-                                    textcount.setText(textcount.getText() + "minp");
                                     if (Storage.getSt().getDateList().get(i).getDateMonth(nm).getDateDay(nd).getNotifyHour(nhour).getNotifyMin(nmin).getNotifytime().isNotify()) {
-                                        textcount.setText(textcount.getText() + "ok");
                                         title = Storage.getSt().getDateList().get(i).getDateMonth(nm).getDateDay(nd).getNotifyHour(nhour).getNotifyMin(nmin).getNotifytime().getTitle();
                                         text = Storage.getSt().getDateList().get(i).getDateMonth(nm).getDateDay(nd).getNotifyHour(nhour).getNotifyMin(nmin).getNotifytime().getText();
 
@@ -166,5 +167,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Datasend.getInstant().setDate(calendar.get(Calendar.DAY_OF_MONTH), (calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.YEAR));
+        textcount.setText(data.getDay()+" / "+data.getMonth()+" / "+data.getYear());
     }
 }
