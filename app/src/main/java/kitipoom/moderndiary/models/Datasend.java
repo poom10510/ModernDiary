@@ -1,5 +1,7 @@
 package kitipoom.moderndiary.models;
 
+import kitipoom.moderndiary.activities.MainActivity;
+
 /**
  * Created by kitipoom on 18/4/2559.
  */
@@ -7,6 +9,7 @@ public class Datasend {
     private static Datasend data;
     private int day,month,year;
     private int hour,minute;
+    private MainActivity main;
     private Datasend(){
 
     }
@@ -45,4 +48,13 @@ public class Datasend {
     public int getMinute() {
         return minute;
     }
+
+    public void setMain(MainActivity main) {
+        this.main = main;
+    }
+
+    public MainActivity getMain() {
+        return main;
+    }
+
 }

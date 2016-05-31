@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initComponent(){
+        data.setMain(this);
         textcount = (TextView) findViewById(R.id.Textcount);
         textcount.setText(data.getDay()+" / "+data.getMonth()+" / "+data.getYear());
         Datasend.getInstant().setDate(calendar.get(Calendar.DAY_OF_MONTH), (calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.YEAR));
