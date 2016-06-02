@@ -124,8 +124,7 @@ public class MainActivity extends AppCompatActivity {
         String head = title;
         String msg = text;
         final NotificationManager mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-        final Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-
+       final Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         Intent intent = new Intent(this, MainActivity.class);
 
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, 0);
@@ -189,8 +188,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void loaddata(){
             Storage.getSt().saveDate(data.getDay(),data.getMonth(),data.getYear());
-        for (int i = 1; i <= 24; i++) {
-            for (int j = 1; j <= 60; j++) {
+        for (int i = 0; i <= 24; i++) {
+            for (int j = 0; j <= 60; j++) {
                 Storage.getSt().getDateyear().getDateMonth(data.getMonth()).getDateDay(data.getDay()).addHour(i, j);
                 if (Storage.getSt().getDateyear().getDateMonth(data.getMonth()).getDateDay(data.getDay()).getNotifyHour(i).getNotifyMin(j).getNotifytime().isNotify()) {
                     Storage.getSt().getDateyear().getDateMonth(data.getMonth()).getDateDay(data.getDay()).setNotilist(true);
