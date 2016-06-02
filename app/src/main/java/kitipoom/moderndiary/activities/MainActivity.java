@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -46,10 +47,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initComponent(){
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         data.setMain(this);
         textcount = (TextView) findViewById(R.id.Textcount);
         textcount.setText(data.getDay()+" / "+data.getMonth()+" / "+data.getYear());
-        Datasend.getInstant().setDate(calendar.get(Calendar.DAY_OF_MONTH), (calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.YEAR));
+        data.setDate(calendar.get(Calendar.DAY_OF_MONTH), (calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.YEAR));
         FloatingActionButton fabdiary = (FloatingActionButton) findViewById(R.id.fabDiary);
         fabdiary.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSelectedDayChange(CalendarView view, int year,
                                             int month, int dayOfMonth) {
                 // TODO Auto-generated method stub
-                Datasend.getInstant().setDate(dayOfMonth, (month + 1), year);
+                data.setDate(dayOfMonth, (month + 1), year);
                 textcount.setText(dayOfMonth + " / " + (month + 1) + " / " + year);
             }
         });
@@ -165,9 +167,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        data.setDate(calendar.get(Calendar.DAY_OF_MONTH), (calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.YEAR));
+        textcount.setText(data.getDay() + " / " + data.getMonth() + " / " + data.getYear());
+        loaddata();
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
-        Datasend.getInstant().setDate(calendar.get(Calendar.DAY_OF_MONTH), (calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.YEAR));
-        textcount.setText(data.getDay()+" / "+data.getMonth()+" / "+data.getYear());
+        data.setDate(calendar.get(Calendar.DAY_OF_MONTH), (calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.YEAR));
+        textcount.setText(data.getDay() + " / " + data.getMonth() + " / " + data.getYear());
+        loaddata();
+
+    }
+    public void loaddata(){
+            Storage.getSt().saveDate(data.getDay(),data.getMonth(),data.getYear());
+        for (int i = 1; i <= 24; i++) {
+            for (int j = 1; j <= 60; j++) {
+                Storage.getSt().getDateyear().getDateMonth(data.getMonth()).getDateDay(data.getDay()).addHour(i, j);
+                if (Storage.getSt().getDateyear().getDateMonth(data.getMonth()).getDateDay(data.getDay()).getNotifyHour(i).getNotifyMin(j).getNotifytime().isNotify()) {
+                    Storage.getSt().getDateyear().getDateMonth(data.getMonth()).getDateDay(data.getDay()).setNotilist(true);
+                }
+            }
+        }
     }
 }

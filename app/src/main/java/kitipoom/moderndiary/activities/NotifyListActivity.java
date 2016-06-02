@@ -1,6 +1,7 @@
 package kitipoom.moderndiary.activities;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -42,6 +43,7 @@ public class NotifyListActivity extends AppCompatActivity {
 
     }
     private void initComponent(){
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setDate();
         date = (TextView) findViewById(R.id.Datetext2);
         date.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.Datetextsizes));
@@ -123,6 +125,7 @@ public class NotifyListActivity extends AppCompatActivity {
         super.onStart();
 
         notilist.clear();
+
 
         for(int i=0;i< Storage.getSt().getDateyear().getDateMonth(month).getDateDay(day).getNotifyList().length;i++){
             if(Storage.getSt().getDateyear().getDateMonth(month).getDateDay(day).getNotifyHour(i)!=null){

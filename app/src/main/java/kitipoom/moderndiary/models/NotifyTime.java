@@ -26,11 +26,12 @@ public class NotifyTime implements Serializable {
         Datasend data= Datasend.getInstant();
         this.hour=hour;
         this.minute=minute;
+        this.notify=false;
+        this.turn=false;
         this.filename= data.getDay()+"."+data.getMonth()+"."+data.getYear()+"."+this.hour+"."+this.minute;
         this.title=readFile(internalInputStream("h"));
         this.text=readFile(internalInputStream("t"));
-        this.notify=false;
-        this.turn=false;
+
 
     }
 
@@ -127,7 +128,10 @@ public class NotifyTime implements Serializable {
                 }
                 fis.close();
                 ret = stringBuilder.toString();
-                turn = true;
+                if(ret!="") {
+                    turn = true;
+                    notify = true;
+                }
             }
         }
         catch (FileNotFoundException e) {

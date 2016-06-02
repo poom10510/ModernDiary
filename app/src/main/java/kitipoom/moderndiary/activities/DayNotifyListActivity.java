@@ -1,6 +1,7 @@
 package kitipoom.moderndiary.activities;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ public class DayNotifyListActivity extends AppCompatActivity {
 
     }
     public void initcomponent(){
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         daelist = new ArrayList<DateDay>();
         daenotiadapter = new DateNotifyAdapter(this,R.layout.datenoti_cell,daelist);
         notiListView = (ListView) findViewById(R.id.listdatenotify);

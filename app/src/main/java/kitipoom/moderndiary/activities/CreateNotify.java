@@ -1,6 +1,7 @@
 package kitipoom.moderndiary.activities;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ public class CreateNotify extends AppCompatActivity {
         initComponent();
     }
     private void initComponent(){
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setTime();
         setDate();
         check=false;

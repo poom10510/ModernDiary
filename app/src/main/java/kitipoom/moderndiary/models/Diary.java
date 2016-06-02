@@ -60,6 +60,7 @@ public class Diary  implements Serializable {
         this.text = "";
         writeFile(internalOutputStream(), this.text);
         this.bmp = null;
+        saveImageToInternalStorage(this.bmp);
 
         open = false;
     }
@@ -132,7 +133,10 @@ public class Diary  implements Serializable {
                 }
                 fis.close();
                 ret = stringBuilder.toString();
-                open = true;
+                if(ret!=""){
+                    open = true;
+                }
+
             }
         }
         catch (FileNotFoundException e) {
@@ -165,6 +169,10 @@ public class Diary  implements Serializable {
                 File filePath = Datasend.getInstant().getMain().getFileStreamPath(filename+".p.png");
                 FileInputStream fi = new FileInputStream(filePath);
                 thumbnail = BitmapFactory.decodeStream(fi);
+                if(thumbnail!=null){
+                    open = true;
+                }
+
             } catch (Exception ex) {
                 Log.e("getThumbnail() on internal storage", ex.getMessage());
             }
