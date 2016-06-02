@@ -33,15 +33,18 @@ public class NotifyAdapter extends ArrayAdapter<NotifyTime> {
         TextView timeshow =(TextView)v.findViewById(R.id.timeshow);
 
         NotifyTime noti = getItem(position);
+
+        String hour = noti.getHour()+"";
+        if(noti. getHour()<10) hour = "0"+hour;
         String min =noti. getMinute()+"";
         if(noti. getMinute()<10) min = "0"+min;
         if(noti.isNotify()){
             //timeshow.setText(noti.getHour()+" : "+noti. getMinute()+ "  "+noti.getTitle()+" ON");
-            timeshow.setText(String.format("%2d : %s %s ON",noti.getHour(),min,noti.getTitle()));
+            timeshow.setText(String.format("%s:%s %s ON",hour,min,noti.getTitle()));
         }
         else{
             //timeshow.setText(noti.getHour()+" : "+noti. getMinute()+ "  "+noti.getTitle()+" OFF");
-            timeshow.setText(String.format("%2d : %s %s OFF",noti.getHour(),min,noti.getTitle()));
+            timeshow.setText(String.format("%s:%s %s OFF",hour,min,noti.getTitle()));
         }
 
 
