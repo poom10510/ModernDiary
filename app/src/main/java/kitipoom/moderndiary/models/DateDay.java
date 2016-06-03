@@ -18,7 +18,7 @@ public class DateDay implements Serializable {
         this.diary = new Diary(Datasend.getInstant().getYear(),Datasend.getInstant().getMonth(),Datasend.getInstant().getDay());
         notilist=false;
 
-        notifyList= new NotifyHour[25];
+        notifyList= new NotifyHour[24];
     }
 
     public Diary getDiary() {

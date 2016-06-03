@@ -9,7 +9,7 @@ public class NotifyHour {
 
     public NotifyHour(int hour){
         this.hour=hour;
-        this.notifyList=new NotifyMin[61];
+        this.notifyList=new NotifyMin[60];
     }
     public void addMin(int min){
         if(notifyList[min]==null){

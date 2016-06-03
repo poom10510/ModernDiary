@@ -188,8 +188,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void loaddata(){
             Storage.getSt().saveDate(data.getDay(),data.getMonth(),data.getYear());
-        for (int i = 0; i <= 24; i++) {
-            for (int j = 0; j <= 60; j++) {
+        for (int i = 0; i < 24; i++) {
+            for (int j = 0; j < 60; j++) {
                 Storage.getSt().getDateyear().getDateMonth(data.getMonth()).getDateDay(data.getDay()).addHour(i, j);
                 if (Storage.getSt().getDateyear().getDateMonth(data.getMonth()).getDateDay(data.getDay()).getNotifyHour(i).getNotifyMin(j).getNotifytime().isNotify()) {
                     Storage.getSt().getDateyear().getDateMonth(data.getMonth()).getDateDay(data.getDay()).setNotilist(true);
